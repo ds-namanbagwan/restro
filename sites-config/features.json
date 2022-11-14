@@ -1,0 +1,244 @@
+{
+  "features": [
+    {
+      "name": "404",
+      "templateType": "JS",
+      "staticPage": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "beverage",
+      "streamId": "beverage",
+      "templateType": "JS",
+      "entityPageSet": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "cart",
+      "templateType": "JS",
+      "staticPage": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "category-search",
+      "streamId": "categorySearch",
+      "templateType": "JS",
+      "entityPageSet": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "collection",
+      "streamId": "videos",
+      "templateType": "JS",
+      "entityPageSet": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "faq-search",
+      "templateType": "JS",
+      "staticPage": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "faq",
+      "streamId": "faq",
+      "templateType": "JS",
+      "entityPageSet": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "filter-search",
+      "streamId": "categoryFilterSearch",
+      "templateType": "JS",
+      "entityPageSet": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "home",
+      "streamId": "home",
+      "templateType": "JS",
+      "entityPageSet": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "location-search",
+      "templateType": "JS",
+      "staticPage": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "location",
+      "streamId": "locations",
+      "templateType": "JS",
+      "entityPageSet": {
+        "plugin": {}
+      }
+    },
+    {
+      "name": "Search",
+      "templateType": "JS",
+      "staticPage": {
+        "plugin": {}
+      }
+    }
+  ],
+  "streams": [
+    {
+      "$id": "beverage",
+      "fields": [
+        "name",
+        "question",
+        "answer",
+        "slug"
+      ],
+      "filter": {
+        "entityTypes": [
+          "faq"
+        ]
+      },
+      "localization": {
+        "locales": [
+          "en"
+        ],
+        "primary": false
+      }
+    },
+    {
+      "$id": "categorySearch",
+      "fields": [
+        "name",
+        "slug"
+      ],
+      "filter": {
+        "savedFilterIds": [
+          "1095554282"
+        ]
+      },
+      "localization": {
+        "locales": [
+          "en"
+        ],
+        "primary": false
+      }
+    },
+    {
+      "$id": "videos",
+      "fields": [
+        "name",
+        "slug",
+        "videos"
+      ],
+      "filter": {
+        "entityIds": [
+          "cfvideo-10",
+          "cfvideo-9",
+          "cfvideo-8"
+        ]
+      },
+      "localization": {
+        "locales": [
+          "en"
+        ],
+        "primary": false
+      }
+    },
+    {
+      "$id": "faq",
+      "fields": [
+        "id",
+        "name",
+        "address",
+        "yextDisplayCoordinate",
+        "photoGallery",
+        "hours",
+        "emails",
+        "mainPhone",
+        "description",
+        "slug"
+      ],
+      "filter": {
+        "entityTypes": [
+          "faq"
+        ]
+      },
+      "localization": {
+        "locales": [
+          "en"
+        ],
+        "primary": false
+      }
+    },
+    {
+      "$id": "categoryFilterSearch",
+      "fields": [
+        "name",
+        "slug"
+      ],
+      "filter": {
+        "entityTypes": [
+          "ce_videos"
+        ]
+      },
+      "localization": {
+        "locales": [
+          "en"
+        ],
+        "primary": false
+      }
+    },
+    {
+      "$id": "home",
+      "fields": [
+        "c_relatedField.name",
+        "c_relatedField.slug"
+      ],
+      "filter": {
+        "entityTypes": [
+          "ce_home"
+        ]
+      },
+      "localization": {
+        "locales": [
+          "en"
+        ],
+        "primary": false
+      }
+    },
+    {
+      "$id": "locations",
+      "fields": [
+        "id",
+        "name",
+        "address",
+        "yextDisplayCoordinate",
+        "photoGallery",
+        "hours",
+        "emails",
+        "mainPhone",
+        "description",
+        "slug"
+      ],
+      "filter": {
+        "entityTypes": [
+          "location"
+        ]
+      },
+      "localization": {
+        "locales": [
+          "en"
+        ],
+        "primary": false
+      }
+    }
+  ]
+}
