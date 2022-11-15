@@ -5,6 +5,8 @@ import LocationsPage from '../pages/LocationsPage';
 import TechnologyPage from '../pages/TechnologyPage';
 import IndustryPage from '../pages/IndustryPage';
 import ExpertiesPage from '../pages/ExpertiesPage';
+import { Data } from '@react-google-maps/api';
+import Test from '../templates/Test';
 
 export const routeConfig = [
   {
@@ -34,5 +36,11 @@ export const routeConfig = [
   {
     path: '/offers',
     page: <IndustryPage verticalKey='videos' />
+  },
+  {
+    path: '/test',
+    page: <Test path={''} relativePrefixToRoot={''} document={Data} __meta={{
+      mode: 'development'
+    }}  />
   },
 ];
