@@ -21,5 +21,6 @@ export default function UniversalSearchPage(props: { universalResultsConfig: Uni
         verticalConfigs={universalResultsConfig}
       />
     </div>
+    
   );
 }

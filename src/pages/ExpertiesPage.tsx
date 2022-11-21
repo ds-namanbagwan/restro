@@ -12,6 +12,7 @@ import FilterDisplayManager from '../components/FilterDisplayManager';
 import ViewFiltersButton from '../components/ViewFiltersButton';
 import { useContext } from 'react';
 import { PageView, PageViewContext } from '../context/PageViewContext';
+import Facets from '../components/Facets';
 
 const staticFiltersConfig = [{
   title: 'Venue',
@@ -62,6 +63,7 @@ export default function ExpertiesPage({ verticalKey }: {
               { label: 'Locations', verticalKey: 'locations' }
             ]}
           />
+          {Facets}
           <VerticalResults
             CardComponent={StandardCard}
           />

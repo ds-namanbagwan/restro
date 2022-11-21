@@ -1,6 +1,7 @@
 import { StandardCard } from '../components/cards/StandardCard';
 import { VerticalConfig } from '../components/UniversalResults';
 import { LocationCard } from '../components/cards/LocationCard';
+import { PlansCard } from '../components/cards/PlansCard';
 
 export type UniversalResultsConfig = Record<string, VerticalConfig>;
 
@@ -23,11 +24,11 @@ export const universalResultsConfig: UniversalResultsConfig = {
     }
   },
 
-  offers: {
+  plans: {
     label: 'Plans',
     viewAllButton: true,
     cardConfig: {
-      CardComponent: StandardCard,
+      CardComponent: PlansCard,
       showOrdinal: false
     }
   },

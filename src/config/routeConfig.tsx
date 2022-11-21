@@ -4,9 +4,10 @@ import { universalResultsConfig } from './universalResultsConfig';
 import LocationsPage from '../pages/LocationsPage'; 
 import TechnologyPage from '../pages/TechnologyPage';
 import IndustryPage from '../pages/IndustryPage';
-import ExpertiesPage from '../pages/ExpertiesPage';
+// import ExpertiesPage from '../pages/ExpertiesPage';
 import { Data } from '@react-google-maps/api';
 import Test from '../templates/Test';
+import PlansPage from '../pages/PlansPage';
 
 export const routeConfig = [
   {
@@ -24,8 +25,8 @@ export const routeConfig = [
   },
 
   {
-    path: '/expertise',
-    page: <ExpertiesPage verticalKey='cf-plans' />
+    path: '/plans',
+    page: <PlansPage verticalKey='cf-plans' />
   },
 
   {
