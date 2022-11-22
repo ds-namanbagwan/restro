@@ -1,12 +1,13 @@
-import { useAnswersState, VerticalResults } from "@yext/answers-headless-react";
-import StandardSection from "../sections/StandardSection";
+import { useAnswersState, VerticalResults } from '@yext/answers-headless-react';
+import StandardSection from '../sections/StandardSection';
 import { AppliedFiltersProps } from '../components/AppliedFilters';
-import SectionHeader from "../sections/SectionHeader";
-import { SectionComponent } from "../models/sectionComponent";
+import SectionHeader from '../sections/SectionHeader';
+import { SectionComponent } from '../models/sectionComponent';
 import { CardConfig } from '../models/cardComponent';
-import { useComposedCssClasses, CompositionMethod } from "../hooks/useComposedCssClasses";
-import classNames from "classnames";
+import { useComposedCssClasses, CompositionMethod } from '../hooks/useComposedCssClasses';
+import classNames from 'classnames';
 
+//prettier-ignore
 interface UniversalResultsCssClasses {
   container?: string,
   results___loading?: string
@@ -14,20 +15,24 @@ interface UniversalResultsCssClasses {
 
 const builtInCssClasses: UniversalResultsCssClasses = {
   container: 'space-y-8 mt-6',
-  results___loading: 'opacity-50'
-}
+  results___loading: 'opacity-50',
+};
 
+//prettier-ignore
 export interface VerticalConfig {
   SectionComponent?: SectionComponent,
   cardConfig?: CardConfig,
   label?: string,
-  viewAllButton?: boolean
+  viewAllButton?: boolean,
+  viewMapButton?: boolean
 }
 
+//prettier-ignore
 interface AppliedFiltersConfig extends Omit<AppliedFiltersProps, 'appliedQueryFilters'> {
   show: boolean
 }
 
+//prettier-ignore
 interface UniversalResultsProps {
   appliedFiltersConfig?: AppliedFiltersConfig,
   verticalConfigs: Record<string, VerticalConfig>,
@@ -42,19 +47,19 @@ export default function UniversalResults({
   verticalConfigs,
   appliedFiltersConfig,
   customCssClasses,
-  cssCompositionMethod
+  cssCompositionMethod,
 }: UniversalResultsProps): JSX.Element | null {
   const cssClasses = useComposedCssClasses(builtInCssClasses, customCssClasses, cssCompositionMethod);
-  const resultsFromAllVerticals = useAnswersState(state => state?.universal?.verticals) || [];
-  const isLoading = useAnswersState(state => state.searchStatus.isLoading);
+  const resultsFromAllVerticals = useAnswersState((state) => state?.universal?.verticals) || [];
+  const isLoading = useAnswersState((state) => state.searchStatus.isLoading);
 
   if (resultsFromAllVerticals.length === 0) {
     return null;
   }
 
-  const resultsClassNames = classNames(cssClasses.container, {
-    [cssClasses.results___loading ?? '']: isLoading
-  });
+  const resultsClassNames = cssClasses.results___loading
+    ? classNames(cssClasses.container, { [cssClasses.results___loading]: isLoading })
+    : cssClasses.container;
 
   return (
     <div className={resultsClassNames}>
@@ -63,6 +68,7 @@ export default function UniversalResults({
   );
 }
 
+//prettier-ignore
 interface VerticalSectionsProps extends UniversalResultsProps {
   resultsFromAllVerticals: VerticalResults[]
 }
@@ -73,42 +79,47 @@ interface VerticalSectionsProps extends UniversalResultsProps {
  */
 function renderVerticalSections(props: VerticalSectionsProps): JSX.Element {
   const { resultsFromAllVerticals, verticalConfigs } = props;
-  return <>
-    {resultsFromAllVerticals
-      .filter(verticalResults => verticalResults.results)
-      .map(verticalResults => {
-        const verticalKey = verticalResults.verticalKey;
-        const verticalConfig = verticalConfigs[verticalKey] || {};
+  return (
+    <>
+      {resultsFromAllVerticals
+        .filter((verticalResults) => verticalResults.results)
+        .map((verticalResults) => {
+          const verticalKey = verticalResults.verticalKey;
+          const verticalConfig = verticalConfigs[verticalKey] || {};
 
-        const label = verticalConfig.label ?? verticalKey;
-        const results = verticalResults.results; 
+          const label = verticalConfig.label ?? verticalKey;
+          const results = verticalResults.results;
+
+          const SectionComponent = verticalConfig.SectionComponent || StandardSection;
+
+          const { show, ...filterconfig } = props.appliedFiltersConfig || {};
+          const appliedFiltersConfig = show
+            ? { ...filterconfig, appliedQueryFilters: verticalResults.appliedQueryFilters }
+            : undefined;
+
         
-        const SectionComponent = verticalConfig.SectionComponent || StandardSection;
 
-        const { show, ...filterconfig } = props.appliedFiltersConfig || {};
-        const appliedFiltersConfig = show
-          ? { ...filterconfig, appliedQueryFilters: verticalResults.appliedQueryFilters }
-          : undefined;
-
-        const resultsCountConfig = { 
-          resultsCount: verticalResults.resultsCount,
-          resultsLength: results.length
-        };
-
-        return <SectionComponent
-          results={results}
-          verticalKey={verticalKey}
-          header={<SectionHeader {...{ 
-            label, 
-            resultsCountConfig,
-            appliedFiltersConfig,
-            verticalKey,
-            viewAllButton: verticalConfig.viewAllButton 
-          }}/>}
-          cardConfig={verticalConfig.cardConfig}
-          key={verticalKey}
-        />
-      })
-    }
-  </>;
+          return (
+      
+            <SectionComponent
+              results={results}
+              verticalKey={verticalKey}
+              header={
+                <SectionHeader
+                  {...{
+                    label,
+                    appliedFiltersConfig,
+                    verticalKey,
+                    viewAllButton: verticalConfig.viewAllButton,
+                    viewMapButton: verticalConfig.viewMapButton,
+                  }}
+                />
+              }
+              cardConfig={verticalConfig.cardConfig}
+              key={verticalKey}
+            />
+          );
+        })}
+    </>
+  );
 }

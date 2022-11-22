@@ -1,7 +1,10 @@
 import { useComposedCssClasses } from '../../hooks/useComposedCssClasses';
 import { CardProps } from '../../models/cardComponent';
+import { Hours, Interval } from './LocationCard';
 import { ResponsiveContext } from '../../App';
 import { useContext } from 'react';
+import { useAnswersState } from '@yext/answers-headless-react';
+
 
 //prettier-ignore
 export interface ClassCardConfig {
@@ -23,9 +26,10 @@ interface Trainer {
 
 //prettier-ignore
 export interface ClassData {
+  videos: any;
   name?: string,
   c_trainer?: Trainer[],
-
+  c_time?: Hours
 }
 
 //prettier-ignore
@@ -48,21 +52,27 @@ const builtInCssClasses: TrainerCardCssClasses = {
 };
 
 // TODO: format hours, hours to middle, fake CTAs on the right, hours to show current status and then can be expanded, limit to 3 results for now, margin between map
-export function PlansCard(props: ClassCardProps): JSX.Element {
+export function VideoCard(props: ClassCardProps): JSX.Element {
   const { result } = props;
-  const description = result.description;
-  const name = result.name;
-  const pricea : any = result.rawData.price;
-  // const value = pricea.value;
+  const workoutClass = result.rawData as unknown as ClassData;
+  const namea = workoutClass.name;
+
+  // const videoSection = workoutClass.videos[0].video.url;
+
+
   const screenSize = useContext(ResponsiveContext);
+
   const cssClasses = useComposedCssClasses(builtInCssClasses);
+
+
+
+ 
 
   return (
     <>
-    <div>{name}</div>
-    <div>{description}</div>
-    {/* Price: {value} € */}
-    <div className="my-2 mx-4 flex max-w-xl py-4 sm:flex-col">
+    {/* <iframe width="420" height="345" src={videoSection}>
+    </iframe> */}
+    <div>{namea}</div><div className="my-2 mx-4 flex max-w-xl py-4 sm:flex-col">
       {screenSize !== 'sm' && (
         <div className={cssClasses.ctaButton}>
           <div className={cssClasses.ctaButtonText}>Check availability</div>

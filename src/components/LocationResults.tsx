@@ -32,6 +32,7 @@ export default function LocationResults(props: LocationResultsProps): JSX.Elemen
             latitude: location.yextDisplayCoordinate.latitude,
             longitude: location.yextDisplayCoordinate.longitude,
           },
+          mainPhone: location.mainPhone
         });
       }
     }
@@ -48,7 +49,7 @@ export default function LocationResults(props: LocationResultsProps): JSX.Elemen
   return (
     <div className="flex">
       <div
-        className={classNames('overflow-y-auto sm:overflow-auto sm:border lg:w-1/4', {
+        className={classNames('overflow-y-auto sm:overflow-auto sm:border lg:w-1/3', {
           hidden: state.showMap,
           'w-full': !state.showMap,
         })}
@@ -69,7 +70,9 @@ export default function LocationResults(props: LocationResultsProps): JSX.Elemen
             currentVerticalLabel="Locations"           
             verticalsConfig={[
               { label: 'FAQs', verticalKey: 'faqs' },
-              { label: 'Events', verticalKey: 'events' },
+              { label: 'Plans', verticalKey: 'cf-plans' },
+              { label: 'Switch', verticalKey: 'switch' },
+              { label: 'Videos', verticalKey: 'videos' },
             ]}
             cssCompositionMethod="assign"
             customCssClasses={{

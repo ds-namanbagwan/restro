@@ -112,7 +112,7 @@ export default function MapGoogle(): JSX.Element {
       <GoogleMap      	  
       center={mapCenter}
       onClick={() => setActiveMarker(null)}
-      mapContainerStyle={{ width: "768px", height: "600px" }}
+      mapContainerStyle={{ width: "100%", height: "600px" }}
       onLoad={loadHandler}
       zoom={MapZoom}      
     >

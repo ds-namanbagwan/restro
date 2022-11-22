@@ -5,8 +5,9 @@ import DirectAnswer from '../components/DirectAnswer';
 import VerticalResults from '../components/VerticalResults';
 import SpellCheck from '../components/SpellCheck';
 import LocationBias from '../components/LocationBias';
-import { StandardCard } from '../components/cards/StandardCard';
 import usePageSetupEffect from '../hooks/usePageSetupEffect';
+import { FaqCard } from '../components/cards/FaqCard';
+import Footer from '../components/Footer';
 
 export default function FAQsPage({ verticalKey }: {
   verticalKey: string
@@ -14,25 +15,24 @@ export default function FAQsPage({ verticalKey }: {
   usePageSetupEffect(verticalKey);
 
   return (
-    <div>
+    <><div>
       <DirectAnswer />
       <SpellCheck />
       <ResultsCount />
       <AppliedFilters
-        hiddenFields={['builtin.entityType']}
-      />
+        hiddenFields={['builtin.entityType']} />
       <AlternativeVerticals
         currentVerticalLabel='FAQs'
         verticalsConfig={[
-          { label: 'Events', verticalKey: 'events' },
-          { label: 'Jobs', verticalKey: 'jobs' },
-          { label: 'Locations', verticalKey: 'locations' }
-        ]}
-      />
+          { label: 'Locations', verticalKey: 'locations' },
+          { label: 'Switch', verticalKey: 'switch' },
+          { label: 'Plans', verticalKey: 'plans' },
+          { label: 'Faqs', verticalKey: 'faqs' }
+        ]} />
       <VerticalResults
-        CardComponent={StandardCard}
-      />
+        CardComponent={FaqCard} />
       <LocationBias />
-    </div>
+      <Footer />
+    </div></>
   )
 }

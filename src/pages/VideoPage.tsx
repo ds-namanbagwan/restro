@@ -1,5 +1,6 @@
 import ResultsCount from '../components/ResultsCount';
 import AlternativeVerticals from '../components/AlternativeVerticals';
+import AppliedFilters from '../components/AppliedFilters';
 import DirectAnswer from '../components/DirectAnswer';
 import VerticalResults from '../components/VerticalResults';
 import SpellCheck from '../components/SpellCheck';
@@ -7,16 +8,16 @@ import LocationBias from '../components/LocationBias';
 import usePageSetupEffect from '../hooks/usePageSetupEffect';
 import { ResponsiveContext } from '../App';
 import { useContext } from 'react';
-import { useAnswersState } from '@yext/answers-headless-react';
-import { PlansCard } from '../components/cards/PlansCard';
 import MobileFilterLayout from '../components/MobileFilterLayout';
 import ClassFacets from '../components/ClassFacets';
+import { useAnswersState } from '@yext/answers-headless-react';
+import { VideoCard } from '../components/cards/VideoCard';
 import Footer from '../components/Footer';
 
 
 export default function PlansPage({ verticalKey }: { verticalKey: string }) {
+  usePageSetupEffect(verticalKey);
   const screenSize = useContext(ResponsiveContext);
-  usePageSetupEffect( verticalKey );
 
   const classFacetOptions = useAnswersState((state) => state.filters.facets?.flatMap((facet) => facet.options));
 
@@ -32,11 +33,11 @@ export default function PlansPage({ verticalKey }: { verticalKey: string }) {
         }} />
       <ResultsCount cssCompositionMethod="assign" customCssClasses={{ text: 'text-sm font-body' }} />
       <AlternativeVerticals
-        currentVerticalLabel="Plans"
+        currentVerticalLabel="Video"
         verticalsConfig={[
           { label: 'Locations', verticalKey: 'locations' },
           { label: 'Faqs', verticalKey: 'faqs' },
-          { label: 'Video', verticalKey: 'video' },
+          { label: 'Plans', verticalKey: 'cf-plans' },
           { label: 'Switch', verticalKey: 'switch' },
         ]}
         cssCompositionMethod="assign"
@@ -48,10 +49,10 @@ export default function PlansPage({ verticalKey }: { verticalKey: string }) {
           suggestion: 'pb-4 text-cforange font-heading',
           allCategoriesLink: 'text-cforange cursor-pointer hover:underline focus:underline',
         }} />
-      {classFacetOptions && classFacetOptions.length > 0 && screenSize !== 'sm' && <ClassFacets />}
-      <div className="justify-center space-x-4">
+      <div className="flex justify-center space-x-4">
+        {classFacetOptions && classFacetOptions.length > 0 && screenSize !== 'sm' && <ClassFacets />}
         <VerticalResults
-          CardComponent={PlansCard}
+          CardComponent={VideoCard}
           displayAllOnNoResults={true}
           customCssClasses={{ container: 'sm:flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:w-4/5 gap-4' }} />
       </div>

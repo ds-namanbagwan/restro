@@ -2,28 +2,27 @@ import { StandardCard } from '../components/cards/StandardCard';
 import { VerticalConfig } from '../components/UniversalResults';
 import { LocationCard } from '../components/cards/LocationCard';
 import { PlansCard } from '../components/cards/PlansCard';
+import LocationSection from '../sections/LocationSection';
+import { FaqCard } from '../components/cards/FaqCard';
+import { VideoCard } from '../components/cards/VideoCard';
+import { SwitchCard } from '../components/cards/SwitchCard';
+
 
 export type UniversalResultsConfig = Record<string, VerticalConfig>;
 
 export const universalResultsConfig: UniversalResultsConfig = {
 
-  menu_items: {
-    label: 'Switch',
-    viewAllButton: true,
-    cardConfig: {
-      CardComponent: StandardCard,
-      showOrdinal: false
-    }
-  },  
+ 
   locations: {
     label: 'Locations',
+    SectionComponent: LocationSection,
+    viewMapButton: true,
     viewAllButton: true,
     cardConfig: {
       CardComponent: LocationCard,
-      showOrdinal: false
-    }
+      showOrdinal: false,
+    },
   },
-
   plans: {
     label: 'Plans',
     viewAllButton: true,
@@ -32,12 +31,30 @@ export const universalResultsConfig: UniversalResultsConfig = {
       showOrdinal: false
     }
   },
+
+  switch: {
+    label: 'Switch',
+    viewAllButton: true,
+    cardConfig: {
+      CardComponent: SwitchCard,
+      showOrdinal: false
+    }
+  }, 
+  videos: {
+    label: 'Videos',
+    viewAllButton: true,
+    cardConfig: {
+      CardComponent: VideoCard,
+      showOrdinal: false
+    }
+  },
     faqs: {
     label: 'FAQs',
     viewAllButton: true,
     cardConfig: {
-      CardComponent: StandardCard,
+      CardComponent: FaqCard,
       showOrdinal: false
     }
   }
+
 }

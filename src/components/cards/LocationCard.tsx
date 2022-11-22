@@ -1,6 +1,6 @@
 import { useComposedCssClasses } from '../../hooks/useComposedCssClasses';
 import { CardProps } from '../../models/cardComponent';
-import { useContext } from 'react';
+import { JSXElementConstructor, ReactElement, ReactNodeArray, ReactPortal, useContext } from 'react';
 import { LocationContext } from '../LocationContext';
 import { LocationActionTypes } from '../locationReducers';
 
@@ -50,11 +50,13 @@ export interface Hours {
 
 //prettier-ignore
 export interface LocationData {
+  mainPhone: string | number | boolean | {} | ReactElement<any, string | JSXElementConstructor<any>> | ReactNodeArray | ReactPortal | null | undefined;
   id: string,
   address?: Address,
   name?: string,
   hours?: Hours,
-  photoGallery?: any
+  photoGallery?: any,
+  
 }
 
 const builtInCssClasses = {
@@ -88,12 +90,18 @@ export function LocationCard(props: LocationCardProps): JSX.Element {
   function renderAddress(address?: Address) {
     if (!address) return;
     return (
+
       <div className={cssClasses.descriptionContainer}>
+        <img className=" " src="https://www.kindpng.com/picc/m/705-7056384_address-png-file-address-icon-png-transparent-png.png" width="28" height="28"
+                alt="" />
         <div>{location.address?.line1}</div>
-        <div>{`${location.address?.city}, ${location.address?.region} ${location.address?.postalCode}`}</div>
+        <div>{`${location.address?.city},${location.address?.postalCode}`}</div>
+        <div>{`${location.address?.region}`}</div>
       </div>
     );
   }
+
+ 
 
   function renderIsGymOpen(hours?: Hours) {
     // if day has openIntervals
@@ -185,6 +193,23 @@ export function LocationCard(props: LocationCardProps): JSX.Element {
         {renderAddress(location.address)}
         {renderIsGymOpen(location.hours)}
       </div>
+
+
+
+
+
+
+<div className="flex flex-row  items-center lp-param-results lp-subparam-phoneNumber map-add">
+              <div className="mr-2 mt-1"><img className=" " src="https://static.vecteezy.com/system/resources/thumbnails/003/720/476/small/phone-icon-telephone-icon-symbol-for-app-and-messenger-vector.jpg" width="28" height="28" alt="" />
+              </div>
+              <div className="phone ">
+                <a id="address" className="" href={`tel:${location.mainPhone}`}>
+                {location.mainPhone}</a>
+              </div>
+            </div>
+      <a className={cssClasses.ctaButton} href="https://communityfibre.co.uk/">Check Availability</a>
+      <a className={cssClasses.ctaButton} href="https://communityfibre.co.uk/">View Packages</a>
+      <a className={cssClasses.ctaButton} href="https://communityfibre.co.uk/">More Info</a>
       {screenSize !== 'sm' && (
         <div className={cssClasses.ctaButton}>
           <div className="sm:text-body align-middle font-heading text-3xl font-bold sm:text-base">JOIN US</div>

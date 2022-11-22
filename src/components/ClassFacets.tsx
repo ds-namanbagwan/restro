@@ -1,14 +1,4 @@
-import {
-    BoxingIcon,
-    YogaIcon,
-    HiitIcon,
-    BarreIcon,
-    DanceIcon,
-    SpinIcon,
-    BootcampIcon,
-    RunIcon,
-    StrengthIcon,
-  } from '../utils/faceticons';
+
   import Facets from './Facets';
   
   //prettier-ignore

@@ -3,6 +3,7 @@ import DirectAnswer from '../components/DirectAnswer';
 import { UniversalResultsConfig } from '../config/universalResultsConfig';
 import SpellCheck from '../components/SpellCheck';
 import usePageSetupEffect from '../hooks/usePageSetupEffect';
+import Footer from '../components/Footer';
 
 const universalResultsFilterConfig = {
   show: true
@@ -13,14 +14,13 @@ export default function UniversalSearchPage(props: { universalResultsConfig: Uni
   usePageSetupEffect();
 
   return (
-    <div>
+    <><div>
       <SpellCheck />
       <DirectAnswer />
       <UniversalResults
         appliedFiltersConfig={universalResultsFilterConfig}
-        verticalConfigs={universalResultsConfig}
-      />
-    </div>
+        verticalConfigs={universalResultsConfig} />
+    </div><Footer /></>
     
   );
 }

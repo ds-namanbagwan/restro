@@ -14,7 +14,6 @@ export interface FacetConfig {
   collapsible?: boolean,
   defaultExpanded?: boolean
 }
-
 interface FacetProps extends FacetConfig {
   facet: DisplayableFacet,
   onToggle: onFacetChangeFn,
