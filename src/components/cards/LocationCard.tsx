@@ -83,27 +83,12 @@ export function LocationCard(props: LocationCardProps): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { state, dispatch } = useContext(LocationContext);
 
-  function renderTitle(title: string) {
-    return <div className={cssClasses.title}>{title}</div>;
-  }
 
-  function renderAddress(address?: Address) {
-    if (!address) return;
-    return (
 
-      <div className={cssClasses.descriptionContainer}>
-        <img className=" " src="https://www.kindpng.com/picc/m/705-7056384_address-png-file-address-icon-png-transparent-png.png" width="28" height="28"
-                alt="" />
-        <div>{location.address?.line1}</div>
-        <div>{`${location.address?.city},${location.address?.postalCode}`}</div>
-        <div>{`${location.address?.region}`}</div>
-      </div>
-    );
-  }
 
  
 
-  function renderIsGymOpen(hours?: Hours) {
+  function renderHours(hours?: Hours) {
     // if day has openIntervals
     let classTime = '';
     switch (new Date().getDay()) {
@@ -159,8 +144,8 @@ export function LocationCard(props: LocationCardProps): JSX.Element {
   function getGymText(isClosed: boolean, time?: string) {
     return (
       <div className="flex flex-col text-sm">
-        <div className="font-bold">{isClosed ? 'Closed' : 'Open'}</div>
-        <div>{isClosed ? `Opens at ${time}` : `Closes at ${formatTime(time)}`}</div>
+        <span className="font-bold">{isClosed ? 'Closed' : 'Open'}</span>
+        <span>{isClosed ? `Opens at ${time}` : `Closes at ${formatTime(time)}`}</span>
       </div>
     );
   }
@@ -187,26 +172,30 @@ export function LocationCard(props: LocationCardProps): JSX.Element {
       onMouseLeave={() => clearHoveredLocation()}>
       <div className={cssClasses.header}>
         {/* {configuration.showOrdinal && result.index && renderOrdinal(result.index)} */}
-        {renderTitle(location.name || '')}
-      </div>
-      <div className={cssClasses.body}>
-        {renderAddress(location.address)}
-        {renderIsGymOpen(location.hours)}
+
       </div>
 
 
 
 
+      <a className={cssClasses.title} href="https://communityfibre.co.uk/">{location.name}</a>
 
+      <div className={cssClasses.descriptionContainer}>
+        <img className=" " src="https://www.kindpng.com/picc/m/705-7056384_address-png-file-address-icon-png-transparent-png.png" width="28" height="28"
+                alt="" />
+        <div>{location.address?.line1}</div>
+        <div>{`${location.address?.city},${location.address?.postalCode}`}</div>
+        <div>{`${location.address?.region}`}</div>
+      </div>
+
+
+      {renderHours(location.hours)}
 
 <div className="flex flex-row  items-center lp-param-results lp-subparam-phoneNumber map-add">
-              <div className="mr-2 mt-1"><img className=" " src="https://static.vecteezy.com/system/resources/thumbnails/003/720/476/small/phone-icon-telephone-icon-symbol-for-app-and-messenger-vector.jpg" width="28" height="28" alt="" />
-              </div>
-              <div className="phone ">
-                <a id="address" className="" href={`tel:${location.mainPhone}`}>
-                {location.mainPhone}</a>
-              </div>
-            </div>
+<div className="mr-2 mt-1"><img className=" " src="https://static.vecteezy.com/system/resources/thumbnails/003/720/476/small/phone-icon-telephone-icon-symbol-for-app-and-messenger-vector.jpg" width="28" height="28" alt="" />
+</div>
+<div className="phone "><a id="address" className="" href={`tel:${location.mainPhone}`}>{location.mainPhone}</a>
+</div></div>
       <a className={cssClasses.ctaButton} href="https://communityfibre.co.uk/">Check Availability</a>
       <a className={cssClasses.ctaButton} href="https://communityfibre.co.uk/">View Packages</a>
       <a className={cssClasses.ctaButton} href="https://communityfibre.co.uk/">More Info</a>
