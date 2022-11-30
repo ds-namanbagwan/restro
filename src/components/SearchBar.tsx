@@ -100,7 +100,7 @@ export default function SearchBar({
     <div className={cssClasses.container}>
       <InputDropdown
         inputValue={query}
-        placeholder={placeholder}
+        placeholder="testing for searchbar"
         screenReaderInstructions={SCREENREADER_INSTRUCTIONS}
         screenReaderText={screenReaderText}
         onSubmit={executeQuery}
