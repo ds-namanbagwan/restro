@@ -3,8 +3,8 @@ import { AnswersHeadlessProvider } from '@yext/answers-headless-react';
 type HeadlessProviderProps = Parameters<typeof AnswersHeadlessProvider>[0];
 
 export const answersHeadlessConfig: HeadlessProviderProps = {
-  apiKey: '41b1d6a6700b970494a89c56648db449',
-  experienceKey: 'fiber',
+  apiKey: '9ed8dd9213b7745ca9fce4986db218cf',
+  experienceKey: 'task3',
   locale: 'en',
   sessionTrackingEnabled: true,
   endpoints: {
