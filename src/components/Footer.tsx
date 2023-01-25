@@ -38,18 +38,16 @@ const Footer = () =>{
               <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
               Connect
               </h6>
-              <p className="flex justify-right items-right   border-gray-300">
+              <p className="flex justify-right items-right   border-black-300">
 
 
                 <a href="#" ><img src="https://communityfibre.co.uk/_next/image?url=https%3A%2F%2Fcdn.buttercms.com%2F8JYcEJbtSvS1YPOASYrM&w=1920&q=75"></img></a>
 
-                <a href="#!" className="ml-2 mr-4 text-gray-600">
+                <a href="#!" className="ml-2 mr-4 text-black-600">
 
                   <img src="https://communityfibre.co.uk/_next/image?url=https%3A%2F%2Fcdn.buttercms.com%2FmFQC6pvGSlyZAAB1zkN2&w=1920&q=75"></img></a>
 
-
-
-                <a href="#!" className="ml-2 mr-4 text-gray-600">
+                <a href="#!" className="ml-2 mr-4 text-black-600">
 
                   <img src="https://communityfibre.co.uk/_next/image?url=https%3A%2F%2Fcdn.buttercms.com%2F6rzZHRkToOEbGHVd83z2&w=1920&q=75"></img></a>
 
@@ -62,7 +60,8 @@ const Footer = () =>{
 
               <div className="">
                 <img
-                  src="https://communityfibre.co.uk/_next/static/images/logoDesktop-9bf97008bd5975f83100ccfb417dfa14.svg"
+                style={{width:"2s00px"}}
+                  src="https://image.similarpng.com/very-thumbnail/2020/06/Restaurant-logo-with-chef-drawing-template-on-transparent-background-PNG.png"
                   width="full"
                   height="50" ></img> </div>
               <br></br>
@@ -85,7 +84,7 @@ const Footer = () =>{
                     d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z">
                   </path>
                 </svg>
-                0800 082 0770
+                0800-XXX-0770
               </p>
             </div>
           </div>

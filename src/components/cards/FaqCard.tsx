@@ -91,25 +91,24 @@ export function FaqCard(props: TrainerCardProps): JSX.Element {
   const isVertical = useAnswersState((s) => s.meta.searchType) === 'vertical';
 
   return (
- 
+ <>
 
-
-
+<div className=" border-2 border-white-600 pt-4 pb-4 pl-4 pr-4 text-center ">
 <Accordion allowZeroExpanded>
-
     <AccordionItem  key={trainer.id}>
         <AccordionItemHeading>
             <AccordionItemButton>
-            <div className='text-black-600'>{renderName(trainer.name)}</div>
+            <div className='text-black-600' >{renderName(trainer.name)}</div>
             </AccordionItemButton>
         </AccordionItemHeading>
         <AccordionItemPanel>
         <div className='text-blue-600'>
-          {renderName(trainer.answer)}         
-          </div>
+          {renderName(trainer.answer)}
+       </div>
         </AccordionItemPanel>
     </AccordionItem>
-
 </Accordion>
+</div>
+</>
   );
 }

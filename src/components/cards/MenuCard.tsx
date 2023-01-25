@@ -1,4 +1,5 @@
 import { useAnswersState } from '@yext/answers-headless-react';
+import { text } from 'express';
 import { useContext } from 'react';
 import { ResponsiveContext } from '../../App';
 import { useComposedCssClasses } from '../../hooks/useComposedCssClasses';
@@ -83,40 +84,37 @@ export function MenuCard(props: TrainerCardProps): JSX.Element {
   const isVertical = useAnswersState((s) => s.meta.searchType) === 'vertical';
 
   const img = trainer?.photoGallery?.map((img: any) => {
-    // console.log (img);
+    
     return (
       <>
-        <img src={img?.image?.sourceUrl} />
+        <img src={img?.image?.sourceUrl}/>
       </>
     );
   });
   return (
 <>
 <div>
+<div className=" border-2 border-white-600 pt-4 pb-4 pl-4 pr-4 text-center ">
   <div className="centered-container">
     <div className="section">    
-    <div
-                className="bg-gray-100 p-2"
-                style={{ color: "black", fontFamily: "cursive", backgroundColor:"white",fontSize:"25px"}}
+    <div className="bg-yellow-100 p-2"
+                style={{ textAlign:"center",color: "black", fontFamily: "cursive",fontSize:"25px",} }
               >{trainer.name}
-    <div className="bg-gray-100 p-2"  style={{ color: "brown", fontFamily: "cursive" ,fontSize:"20px"}}>    
+                <div className="bg-gray-100 p-2 "  style={{ alignItems:"center",color: "brown", fontFamily: "cursive" ,fontSize:"20px" ,width:"300px"}}> 
+                 <p> {img}</p>
+                </div>
+    <div className="bg-yellow-100 p-2"  style={{textAlign:"center", color: "brown", fontFamily: "cursive" ,fontSize:"20px"}}>    
                       
                 <p> {renderDescription(trainer.richTextDescription)}</p>
-              </div>
-              <div className="bg-gray-100 p-2"  style={{ color: "brown", fontFamily: "cursive" ,fontSize:"20px" ,width:"150px"}}>    
-                      
-                <p> {img}</p>
-              </div>
-              
-     <div className="bg-gray-100 p-2" style={{ color: "white", fontFamily: "cursive" ,fontSize:"15px" }}>
-      <button style={{backgroundColor:"black" , width:"100px"}}>OrderNow</button></div>            
+              </div>      
+            
+     <div className="bg-yellow-100 p-2" style={{ alignItems:"center",color: "white", fontFamily: "cursive" ,fontSize:"15px" }}>
+      <button style={{backgroundColor:"black" , width:"200px", borderRadius:"10px"}}>OrderNow</button></div>            
       </div>     
     </div>
   </div>
+  </div>
 </div>
 </>
-
-
-
   );
 }

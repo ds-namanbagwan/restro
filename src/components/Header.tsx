@@ -1,22 +1,23 @@
 const Header = () =>{
 return(
-<div className="centered-container">
+<div className="centered-container" >
       <nav className="flex items-center justify-between">
         <div className="pl-40">
           <img
-            src="https://communityfibre.co.uk/_next/static/images/logoDesktop-9bf97008bd5975f83100ccfb417dfa14.svg"
+          style={{width:"100px"}}
+            src="https://image.similarpng.com/very-thumbnail/2020/06/Restaurant-logo-with-chef-drawing-template-on-transparent-background-PNG.png"
             width="full"
             height="50"></img> </div>
         <ul className="submenu flex  justify-center gap-x-10 text-2xl font-normal">
-            <li><a href="https://communityfibre.co.uk/">Broadband</a></li>
-            <li><a href="https://communityfibre.co.uk/tv">TV</a></li>
-            <li><a href="https://communityfibre.co.uk/landline">Calls</a></li>
-            <li><a href="https://communityfibre.co.uk/deals">Deals</a></li>
-            <li><a href="https://communityfibre.co.uk/why-choose-community-fibre">Why choose us</a></li>
+           
+            <li><a href="#">Book</a></li>
+            <li><a href="#">Calls</a></li>
+            <li><a href="#">Deals</a></li>
+
         </ul>
        
         <div className="mr-80">
-          <a href="https://communityfibre.co.uk/#postcode-search-modal" >Get Started</a>
+          <a href="#" >Get Started</a>
         </div>
       </nav>
     </div>
